@@ -1,0 +1,18 @@
+Proposal for design and development of a Peptide Analysis Tool
+
+	My background is in molecular biology, where I perform a great deal of protein purification. It is incredibly important to understand the properties of the molecules I am purifying, especially the molecular weight and pI to ensure that the proper columns and elution buffers are used. As a result, I am interested in designing a tool that can quickly and efficiently return all of the physical properties of interest when provided with the amino acid sequence of a specific protein. For the sake of convenience, it will be optimal if the tool can accept multiple sequences as well, as there are times when we are interested in the properties of many proteins at once.
+
+Functionality:
+	The only input that the Peptide Analysis Tool requires will be the amino acid sequence(s). Users will be able to enter one singular sequence, or multiple sequences; if multiple sequences are entered for analysis, they must be in fasta format or the tool will not return the desired information, but single sequences will not mandate the fasta format. The tool will break the sequence down into individual amino acid counts, and determine the following physical properties:
+Isoelectric point (pI)
+Molecular weight (daltons)
+Net charge at pH 7.4
+Hydrophobicity
+Extinction coefficient
+
+Description:
+	The tool will use the following software to perform its intended purpose:
+
+SQL databases: House the physical properties of each amino acid. Information about the 
+Python CGI: Will perform the calculations for the aforementioned properties of interest, using formulas from reputable sources. The CGI will tally the count of each amino acid, then refer to SQL for their individual properties, and calculate the properties for each peptide. Calculations will be passed on to the GUI to be displayed to the user.
+CSS/HTML/JavaScript GUI: Provide a visually pleasing interface for the user to input their sequence and receive the results. 
