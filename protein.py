@@ -37,11 +37,11 @@ class Protein:
     cursor = connection.cursor()
     #value to be returned
     molecular_property_value = 0
-    qry = "SELECT %s FROM amino_acid_db WHERE code = %s"
+    qry = "SELECT {} FROM amino_acid_db WHERE code = %s".format(desired_property)
     #iterate over each amino acid in the sequence, get its property value
     for aa, count in self.aa_count.items():
-      cursor.execute(qry, (desired_property, aa))
-      property_value = cursor.fetchone()
+      cursor.execute(qry, (aa,))
+      property_value = cursor.fetchall()
       molecular_property_value += property_value[0]*count
     connection.close()
     return molecular_property_value
