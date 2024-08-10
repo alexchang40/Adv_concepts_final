@@ -41,8 +41,8 @@ class Protein:
     #iterate over each amino acid in the sequence, get its property value
     for aa, count in self.aa_count.items():
       cursor.execute(qry, (aa,))
-      property_value = cursor.fetchall()
-      molecular_property_value += property_value[0]*count
+      property_value = cursor.fetchone()
+      molecular_property_value += property_value[0][0]*count
     connection.close()
     return molecular_property_value
       
