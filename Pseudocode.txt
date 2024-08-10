@@ -3,7 +3,7 @@ Database: achang83_final
     Rows: code, full_name, molecular_weight, hydropathy, extinction_coefficient, pKa1, pKa2, pKa3
 
 
-input_protein.html - input the protein(s), 
+input_protein.html - input the protein(s), output the results, link to JS and CSS files for formatting and interactivity
 JS file - javascript for interactivity with input_protein.html
 CSS file - css
 main.cgi - 
