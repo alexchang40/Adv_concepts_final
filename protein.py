@@ -9,7 +9,7 @@ class Protein:
     self.weight = self.get_molecular_property("weight")
     self.hydropathy = self.get_molecular_property("hydropathy")
     self.extinction = self.get_molecular_property("extinction")
-    self.pH_7.4 = self.get_molecular_property(7.4)
+    self.pH_7 = self.get_molecular_property(7.4)
 
   #count the numbers of each amino acid in the sequence
   def count_amino_acids(self):
