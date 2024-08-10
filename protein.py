@@ -5,7 +5,7 @@
 class Protein:
   def __init__(self, sequence):
     self.sequence = sequence
-    self.count_amino_acids()
+    self.aa_count = self.count_amino_acids()
     self.weight = self.get_molecular_property("weight")
     self.hydropathy = self.get_molecular_property("hydropathy")
     self.extinction = self.get_molecular_property("extinction")
@@ -22,7 +22,7 @@ class Protein:
       #add a new amino acid to the dictionary
       else:
         aa_count[amino_acid] = 1
-    self.aa_count = aa_count
+    return aa_count
 
   #calculate a specific molecular property for the protein
   def get_molecular_property(desired_property):
@@ -34,7 +34,4 @@ class Protein:
       return "It returned extinction"
     #in this case desired property is pH
     else:
-      return "It returned the pH " + desired_property
-    
-
-    
+      return "It returned the pH {}".format(desired_property)
