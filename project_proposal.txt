@@ -13,6 +13,6 @@ Extinction coefficient
 Description:
 	The tool will use the following software to perform its intended purpose:
 
-SQL databases: House the physical properties of each amino acid. Information about the 
+SQL databases: House the physical properties of each amino acid.
 Python CGI: Will perform the calculations for the aforementioned properties of interest, using formulas from reputable sources. The CGI will tally the count of each amino acid, then refer to SQL for their individual properties, and calculate the properties for each peptide. Calculations will be passed on to the GUI to be displayed to the user.
 CSS/HTML/JavaScript GUI: Provide a visually pleasing interface for the user to input their sequence and receive the results. 
