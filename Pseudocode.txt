@@ -1,3 +1,20 @@
 Database: achang83_final
   Table: amino_acid_db
     Rows: code, full_name, molecular_weight, hydropathy, extinction_coefficient, pKa1, pKa2, pKa3
+
+
+input_protein.html - input the protein(s), 
+JS file - javascript for interactivity with input_protein.html
+CSS file - css
+main.cgi - 
+protein.py
+  Functions:
+    get_value(property)
+        if property = "Weight"
+        elif property = "Hydropathy"
+        elif property = "Extinction"
+        #last property is only for pH
+        else 
+    count_amino_acids()
+    
+    
