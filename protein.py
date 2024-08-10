@@ -12,8 +12,10 @@ class Protein:
     #make empty dictionary to hold counts
     aa_count = {}
     for amino_acid in self.sequence:
+      #if amino acid has already been added
       if amino_acid in aa_count:
         aa_count[amino_acid] += 1
+      #add a new amino acid to the dictionary
       else:
         aa_count[amino_acid] = 1
     self.aa_count = aa_count
