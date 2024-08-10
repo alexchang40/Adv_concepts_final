@@ -9,6 +9,7 @@ class Protein:
 
   #count the numbers of each amino acid in the sequence
   def count_amino_acids(self):
+    #make empty dictionary to hold counts
     aa_count = {}
     for amino_acid in self.sequence:
       if amino_acid in aa_count:
