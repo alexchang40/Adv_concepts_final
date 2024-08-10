@@ -11,7 +11,8 @@ class Protein:
     self.hydropathy = self.get_molecular_property("hydropathy")
     self.extinction = self.get_molecular_property("extinction_coefficient")
     #wip right now
-    self.pH_74 = "Temporarily nothing"
+    self.charge_at_74 = "Temporarily nothing"
+    self.pI = "Temporarily nothing"
     
   #connect to the database
   def connect_to_db(self):
@@ -45,4 +46,23 @@ class Protein:
       molecular_property_value += property_value[0]*count
     connection.close()
     return molecular_property_value
+
+  #calculate the charge of the protein at a specific pH
+  def get_charge_at_pH(self, pH_value):
+    connection = self.connect_to_db()
+    cursor = connection.cursor()
+    #value to be returned
+    charge = 0
+    qry1 = "SELECT pKa1 FROM amino_acid_db WHERE code = %s"
+    qry2 = "SELECT pKa2 FROM amino_acid_db WHERE code = %s"
+    qry3 = "SELECT pKa3 FROM amino_acid_db WHERE code = %s"
+    
+    #get the values for amino acids at C and N terminus
+    cterm_aa = self.sequence[0]
+    nterm_aa = self.sequence[-1]
+    negative = ["D", "E", "C", "Y"]
+    positive = ["H", "R", "K"]
+    for aa, count in self.aa_count.items():
+      if aa in positive or negative:
+        print(aa)
       
