@@ -1,16 +1,23 @@
 #!/usr/local/bin/env python3
 
-#define the protein class and take a sequence as the entry
+import mysql.connector
 
+#define the protein class and take a sequence as the entry
 class Protein:
   def __init__(self, sequence):
     self.sequence = sequence
     self.aa_count = self.count_amino_acids()
-    self.weight = self.get_molecular_property("weight")
+    self.weight = self.get_molecular_property("molecular_weight")
     self.hydropathy = self.get_molecular_property("hydropathy")
-    self.extinction = self.get_molecular_property("extinction")
-    self.pH_74 = self.get_molecular_property(7.4)
-
+    self.extinction = self.get_molecular_property("extinction_coefficient")
+    #wip right now
+    self.pH_74 = "Temporarily nothing"
+    
+  #connect to the database
+  def connect_to_db(self):
+    connection = mysql.connector.connect(user = "achang83", password = "databases", host = "localhost", database = "achang83_final")
+    return connection
+    
   #count the numbers of each amino acid in the sequence
   def count_amino_acids(self):
     #make empty dictionary to hold counts
@@ -24,14 +31,18 @@ class Protein:
         aa_count[amino_acid] = 1
     return aa_count
 
-  #calculate a specific molecular property for the protein
-  def get_molecular_property(desired_property):
-    if desired_property == "weight":
-      return "It returned weight"
-    elif desired_property == "hydropathy":
-      return "It returned hydropathy"
-    elif desired_property == "extinction":
-      return "It returned extinction"
-    #in this case desired property is pH
-    else:
-      return "It returned the pH {}".format(desired_property)
+  #calculate a specific molecular property for the protein of molecular weight, hydropathy, or extinction coefficient
+  def get_molecular_property(self, desired_property):
+    connection = self.connect_to_db()
+    cursor = connection.cursor()
+    #value to be returned
+    molecular_property_value = 0
+    qry = "SELECT %s FROM amino_acid_db WHERE code = %s"
+    #iterate over each amino acid in the sequence, get its property value
+    for aa, count in self.aa_count.items():
+      cursor.execute(qry, (desired_property, aa))
+      property_value = cursor.fetchone()
+      molecular_property_value += property_value[0]*count
+    connection.close()
+    return molecular_property_value
+      
