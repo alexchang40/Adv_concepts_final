@@ -63,6 +63,6 @@ class Protein:
     negative = ["D", "E", "C", "Y"]
     positive = ["H", "R", "K"]
     for aa, count in self.aa_count.items():
-      if aa in positive or negative:
+      if aa in positive or in negative:
         print(aa)
       
