@@ -11,7 +11,7 @@ class Protein:
     self.hydropathy = self.get_molecular_property("hydropathy")
     self.extinction = self.get_molecular_property("extinction_coefficient")
     #wip right now
-    self.charge_at_74 = "Temporarily nothing"
+    self.charge_at_74 = self.get_charge_at_pH(7.4)
     self.pI = "Temporarily nothing"
     
   #connect to the database
@@ -63,6 +63,6 @@ class Protein:
     negative = ["D", "E", "C", "Y"]
     positive = ["H", "R", "K"]
     for aa, count in self.aa_count.items():
-      if aa in positive or aa in negative:
+      if aa in positive or negative:
         print(aa)
       
