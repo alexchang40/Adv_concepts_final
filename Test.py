@@ -1,6 +1,6 @@
 #!/usr/local/bin/python3
 
-import protein.py
+import protein
 
 test_seq1 = "MAVNKYRGDILQEYALQKST"
 test_seq2 = "LQNTKTYRFLQRKNEPSIYDDVNRW"
