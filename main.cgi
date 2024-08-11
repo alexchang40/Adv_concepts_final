@@ -13,7 +13,17 @@ def main():
         print(json.dumps({"error": "No sequence provided"}))
         return
 
-    protein = Protein(sequence)
+    #ensure that any amino acids out of scope are replaced with Leucine, which is the most common amino acid
+    corrected sequence = ""
+    valid_amino_acids = "ACDEFGHIKLMPQRSTWY"
+    for aa in sequence:
+        if aa in valid_amino_acids:
+            corrected_sequence += aa
+        else:
+            corrected_sequence += "L"
+
+
+    protein = Protein(corrected_sequence)
     result = {
         "sequence": protein.sequence,
         "length": len(protein.sequence)
@@ -24,7 +34,6 @@ def main():
     }
 
     print(json.dumps(result))
-
 
 if __name__ == "__main__":
     main()
