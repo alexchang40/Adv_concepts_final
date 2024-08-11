@@ -11,7 +11,7 @@ class Protein:
     self.hydropathy = self.get_molecular_property("hydropathy")
     self.extinction = self.get_molecular_property("extinction_coefficient")
     self.charge_74 = self.get_charge_at_pH(7.4)
-    self.pI = "Temporarily nothing"
+    self.pI = self.get_pI()
     
   #connect to the database
   def connect_to_db(self):
@@ -72,7 +72,6 @@ class Protein:
       else:
         continue
       charge += aa_charge
-    print("The charge is {}".format(charge))
     cursor.execute(qry1, (cterm_aa,))
     pKa1_value = cursor.fetchone()
     if specific_pH > pKa1_value[0]:
@@ -82,4 +81,19 @@ class Protein:
     if specific_pH < pKa2_value[0]:
       charge += 1
     return charge
-      
+  
+  #calculate pI finding charge at pH 7.0; if charge is > 0, check 7 + 3.5 while if charge < 0, check 7 - 3.5. Repeat until charge is close to 0.
+  def get_pI(self):
+    test_pH = 7.0
+    step = 3.5
+    tolerance = 0.1 #within .1 is a close enough pH for my purposes
+    while step > tolerance:
+      charge = self.get_charge_at_pH(test_pH)
+      print("pH: {}, Charge: {}".format(test_pH, charge))
+      if charge>0:
+        test_pH += step
+      else:
+        test_pH -= step
+      #reduce step size
+      step /= 2
+    return test_pH
