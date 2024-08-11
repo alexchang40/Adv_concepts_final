@@ -64,8 +64,23 @@ class Protein:
     negative = ["D", "E", "C", "Y"]
     positive = ["H", "R", "K"]
     for aa, count in self.aa_count.items():
-      cursor.execute(qry3, (aa, ))
-      pka3_value = cursor.fetchone()
+      cursor.execute(qry3, (aa,))
+      pKa3_value = cursor.fetchone()
       print(pka3_value[0])
-      if aa in negative and pH_value> :
+      if aa in negative and pH_value> pKa3_value[0]:
         aa_charge = -1*count
+      elif aa in positive and pH_value < pKa3_value[0]:
+        aa_charge = 1*count
+      else:
+        continue
+      charge += aa_charge
+    cursor.execute(qry1, (cterm_aa,))
+    pKa1_value = cursor.fetchone()
+    if pH_value > pKa1_value[0]:
+      charge -= 1
+    cursor.execute(qry2, (nterm_aa,))
+    pKa2_value = cursor.fetchone()
+    if pH_value < pKa2_value[0]:
+      charge += 1
+    return charge
+      
