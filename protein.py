@@ -63,6 +63,8 @@ class Protein:
     negative = ["D", "E", "C", "Y"]
     positive = ["H", "R", "K"]
     for aa, count in self.aa_count.items():
-      if aa in positive or aa in negative:
-        print(aa)
-      
+      #print(aa)
+      cursor.execute(qry3, (aa, ))
+      pka3_value = cursor.fetchone()
+      if aa in negative:
+        aa_charge = -1*count
