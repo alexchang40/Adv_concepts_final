@@ -16,7 +16,8 @@
     <h1>Protein Molecular Properties Calculator</h1>
   </header>
   <main>
-    <p>Enter your protein sequence below. Multiple sequences can be entered simultaneously, but must be done in FASTA format.</p>
+    <p>Enter your protein sequence below. Only one sequence may be entered, upper or lowercase okay. 
+      Amino acids outside of the common 20 or typos will be replaced with Leucine.</p>
     <form name = "peptide_form" id = "peptide_form" action = "">
       <label for = "sequence">Enter Amino Acid Sequence:</label>
       <textarea type = "text" id = "sequence" name = "sequence" rows = "10" cols = "100" autofocus = "autofocus">
@@ -25,7 +26,6 @@
     </form>
 
     <section id = "results">
-      
       <!-- Results will be displayed here -->
     </section>
   </main>
