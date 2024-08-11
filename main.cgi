@@ -16,7 +16,7 @@ def main():
     protein = Protein(sequence)
     result = {
         "sequence": protein.sequence,
-        "length": protein.aa_count,
+        "length": len(protein.sequence)
         "weight": protein.weight,
         "hydropathy": protein.hydropathy,
         "extinction coefficient": protein.extinction,
