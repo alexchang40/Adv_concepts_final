@@ -13,9 +13,14 @@ def main():
         print(json.dumps({"error": "No sequence provided"}))
         return
 
+    protein = Protein(sequence)
     result = {
-        "sequence": sequence,
-        "length": len(sequence)
+        "sequence": protein.sequence,
+        "length": protein.aa_count,
+        "weight": protein.weight,
+        "hydropathy": protein.hydropathy,
+        "extinction coefficient": protein.extinction,
+        "pI": protein.pI
     }
 
     print(json.dumps(result))
