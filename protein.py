@@ -45,6 +45,7 @@ class Protein:
       property_value = cursor.fetchone()
       molecular_property_value += property_value[0]*count
     connection.close()
+    cursor.close()
     return molecular_property_value
 
   #calculate the charge of the protein at a specific pH
@@ -63,8 +64,8 @@ class Protein:
     negative = ["D", "E", "C", "Y"]
     positive = ["H", "R", "K"]
     for aa, count in self.aa_count.items():
-      #print(aa)
       cursor.execute(qry3, (aa, ))
       pka3_value = cursor.fetchone()
-      if aa in negative:
+      print(pka3_value[0])
+      if aa in negative and pH_value> :
         aa_charge = -1*count
