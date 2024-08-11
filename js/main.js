@@ -1,33 +1,26 @@
-function submitForm() {
-    const sequence = document.getElementById("sequence").value.trim();
+function sendSequence( input ) {
+    $("#results").hide();
+    $("tbody").empty();
 
-    if (!sequence) {
-        alert("Please enter a sequence!");
-        return;
-    }
+    var frmStr = $("peptide_form").serialize();
 
-    const formData = new FormData();
-    formData.append("sequence", sequence);
-
-    
-    fetch("/../main.cgi", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.error) {
-            alert(data.error);
-        } else {
-            let resultsHtml = "<h2>Results:</h2><ul>";
-            for (const aa in data) {
-                resultsHtml += `<li>${aa}: ${data[aa]}</li>`;
-            }
-            resultsHtml += "</ul>";
-            document.getElementById("results").innerHTML = resultsHtml;
+    $.ajax({
+        url: "./main.cgi",
+        dataType: "json",
+        data: frmStr,
+        success: function(data, textStatus, jqXHR) {
+            alert("It worked");
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert("Failed to perform protein analysis! textStatus: (" + textStatus +") and errorThrown: ("+ errorThrown + ")");
         }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("There was an error processing your request.");
     });
+}
+
+function processJSON( data ) {
+}
+
+$("submit").click( function() {
+    sendSequence();
+    return false;
+});
