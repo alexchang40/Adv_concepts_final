@@ -13,11 +13,12 @@
     <h1>Protein Molecular Properties Calculator</h1>
   </header>
   <main>
+    <p>Enter your protein sequence below. Multiple sequences can be entered simultaneously, but must be done in FASTA format.</p>
     <form id = "peptide-form">
       <label for = "sequence">Enter Amino Acid Sequence:</label>
-      <textarea type = "text" id = "sequence" name = "sequence" autofocus = "autofocus" placeholder = "Enter protein sequence here">
-      
-      <button type = "button" onclick = "analyzePeptide()">Analyze</button>
+      <textarea type = "text" id = "sequence" name = "sequence" rows = "10" cols = "100" autofocus = "autofocus">
+      </textarea>
+      <button type = "button" onclick = "submitForm()">Analyze</button>
     </form>
 
     <section id = "results">
