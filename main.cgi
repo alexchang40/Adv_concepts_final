@@ -24,7 +24,7 @@ def main():
 
 
     protein = Protein(corrected_sequence)
-    result = {
+    results = {
         "sequence": protein.sequence,
         "length": len(protein.sequence)
         "weight": protein.weight,
@@ -33,7 +33,7 @@ def main():
         "pI": protein.pI
     }
 
-    print(json.dumps(result))
+    print(json.dumps(results))
 
 if __name__ == "__main__":
     main()
