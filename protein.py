@@ -10,8 +10,7 @@ class Protein:
     self.weight = self.get_molecular_property("molecular_weight")
     self.hydropathy = self.get_molecular_property("hydropathy")
     self.extinction = self.get_molecular_property("extinction_coefficient")
-    #wip right now
-    self.charge_at_74 = self.get_charge_at_pH(7.4)
+    self.charge_74 = self.get_charge_at_pH(7.4)
     self.pI = "Temporarily nothing"
     
   #connect to the database
@@ -49,7 +48,7 @@ class Protein:
     return molecular_property_value
 
   #calculate the charge of the protein at a specific pH
-  def get_charge_at_pH(self, pH_value):
+  def get_charge_at_pH(self, specific_pH):
     connection = self.connect_to_db()
     cursor = connection.cursor()
     #value to be returned
@@ -66,21 +65,21 @@ class Protein:
     for aa, count in self.aa_count.items():
       cursor.execute(qry3, (aa,))
       pKa3_value = cursor.fetchone()
-      print(pka3_value[0])
-      if aa in negative and pH_value> pKa3_value[0]:
+      if aa in negative and specific_pH> pKa3_value[0]:
         aa_charge = -1*count
-      elif aa in positive and pH_value < pKa3_value[0]:
+      elif aa in positive and specific_pH < pKa3_value[0]:
         aa_charge = 1*count
       else:
         continue
       charge += aa_charge
+    print("The charge is {}".format(charge))
     cursor.execute(qry1, (cterm_aa,))
     pKa1_value = cursor.fetchone()
-    if pH_value > pKa1_value[0]:
+    if specific_pH > pKa1_value[0]:
       charge -= 1
     cursor.execute(qry2, (nterm_aa,))
     pKa2_value = cursor.fetchone()
-    if pH_value < pKa2_value[0]:
+    if specific_pH < pKa2_value[0]:
       charge += 1
     return charge
       
