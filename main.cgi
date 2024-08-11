@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3
 import cgi
 import json
+from protein import Protein
 
 def main():
     print("Content-type: application/json\n")
