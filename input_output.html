@@ -6,6 +6,9 @@
   <title>Protein Properties Calculator</title>
   <link rel = "stylesheet" type = "text/css" href = "css/main.css"/>
   <script type = "text/javascript" src = "js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -14,11 +17,11 @@
   </header>
   <main>
     <p>Enter your protein sequence below. Multiple sequences can be entered simultaneously, but must be done in FASTA format.</p>
-    <form id = "peptide-form">
+    <form name = "peptide-form" id = "peptide-form" action = "">
       <label for = "sequence">Enter Amino Acid Sequence:</label>
       <textarea type = "text" id = "sequence" name = "sequence" rows = "10" cols = "100" autofocus = "autofocus">
       </textarea>
-      <button type = "button" onclick = "submitForm()">Analyze</button>
+      <input name = "submit" type = "submit" id = "submit" value = "submit">
     </form>
 
     <section id = "results">
