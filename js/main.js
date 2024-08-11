@@ -1,29 +1,34 @@
-function analyzePeptide() {
+function submitForm() {
     const sequence = document.getElementById('sequence').value.trim();
-    
-    if (sequence === '') {
+
+    if (!sequence) {
         alert('Please enter a sequence!');
         return;
     }
 
-    // Example: Count amino acids (simple example, you should extend it)
-    const aaCounts = {};
-    for (let i = 0; i < sequence.length; i++) {
-        const aa = sequence[i].toUpperCase();
-        if (aaCounts[aa]) {
-            aaCounts[aa]++;
+    // Create a FormData object to send the sequence
+    const formData = new FormData();
+    formData.append('sequence', sequence);
+
+    // Send a POST request to the CGI script
+    fetch('/cgi-bin/peptide_analysis.py', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
         } else {
-            aaCounts[aa] = 1;
+            let resultsHtml = '<h2>Results:</h2><ul>';
+            for (const aa in data) {
+                resultsHtml += `<li>${aa}: ${data[aa]}</li>`;
+            }
+            resultsHtml += '</ul>';
+            document.getElementById('results').innerHTML = resultsHtml;
         }
-    }
-
-    // Display results
-    let resultsHtml = '<h2>Results:</h2>';
-    resultsHtml += '<ul>';
-    for (const aa in aaCounts) {
-        resultsHtml += `<li>${aa}: ${aaCounts[aa]}</li>`;
-    }
-    resultsHtml += '</ul>';
-
-    document.getElementById('results').innerHTML = resultsHtml;
-}
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error processing your request.');
+    });
