@@ -6,6 +6,5 @@ Database: achang83_final
 input_output.html - input the protein(s), output the results, link to JS and CSS files for formatting and interactivity
 JS file - javascript for interactivity with input_protein.html
 CSS file - css
-main.cgi - read in sequences, scrub and .upper all, pass results back
+main.cgi - read in sequences, replace incorrect with Leucine, scrub and .upper all, pass results back
 protein.py - complete
-  
