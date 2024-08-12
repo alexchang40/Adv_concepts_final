@@ -27,8 +27,8 @@
   * README.md - this file
   * input_output.html - html file that can accept protein input and display molecular property information
   * main.cgi - import protein.py for 
-  * mysql_ref.txt -
-  * project_proposal.txt -
+  * mysql_ref.txt - txt file housing the contents of amino_acid_db
+  * project_proposal.txt - original project proposal
   * protein.py - implementation of a "Protein" class that holds information depicted above
   * test.py - protein.py test python file
   * test_sequences.txt - houses test sequences
