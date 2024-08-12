@@ -2,7 +2,7 @@ function sendSequence( input ) {
     $("#results").hide();
     $("tbody").empty();
 
-    var frmStr = $("peptide_form").serialize();
+    var frmStr = $("#peptide_form").serialize();
 
     $.ajax({
         url: "./main.cgi",
@@ -18,9 +18,11 @@ function sendSequence( input ) {
 }
 
 function processJSON( data ) {
+    $("<p>testing this to see if it works or not</p>"
+    $("#results").show();
 }
 
-$("submit").click( function() {
+$("#submit").click( function() {
     sendSequence();
     return false;
 });
