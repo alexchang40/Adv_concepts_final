@@ -26,7 +26,7 @@ def main():
     protein = Protein(corrected_sequence)
     results = {
         "sequence": protein.sequence,
-        "length": len(protein.sequence)
+        "length": len(protein.sequence),
         "weight": protein.weight,
         "hydropathy": protein.hydropathy,
         "extinction coefficient": protein.extinction,
