@@ -22,13 +22,13 @@
 4. Data will show up below. 
 
 * FILES:
-/css/main.css - css documentation for input_output.html
-/js/main.js - js implementation for input_output.html
-README.md - this file
-input_output.html - html file that can accept protein input and display molecular property information
-main.cgi - import protein.py for 
-mysql_ref.txt -
-project_proposal.txt -
-protein.py - implementation of a "Protein" class that holds information depicted above
-test.py - protein.py test python file
-test_sequences.txt - houses test sequences
+  * /css/main.css - css documentation for input_output.html
+  * /js/main.js - js implementation for input_output.html
+  * README.md - this file
+  * input_output.html - html file that can accept protein input and display molecular property information
+  * main.cgi - import protein.py for 
+  * mysql_ref.txt -
+  * project_proposal.txt -
+  * protein.py - implementation of a "Protein" class that holds information depicted above
+  * test.py - protein.py test python file
+  * test_sequences.txt - houses test sequences
