@@ -14,7 +14,7 @@ def main():
         return
 
     #ensure that any amino acids out of scope are replaced with Leucine, which is the most common amino acid
-    corrected sequence = ""
+    corrected_sequence = ""
     valid_amino_acids = "ACDEFGHIKLMNPQRSTVWY"
     for aa in sequence:
         if aa in valid_amino_acids:
