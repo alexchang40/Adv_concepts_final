@@ -14,7 +14,7 @@ def main():
         return
 
     #ensure that any amino acids out of scope are replaced with Leucine, which is the most common amino acid
-    #additionally add a newline every 100 amino acids to an adj_sequence variable
+    #additionally add a newline every 50 amino acids to an adj_sequence variable
     i = 0
     corrected_sequence = ""
     adj_sequence = ""
@@ -26,7 +26,7 @@ def main():
         else:
             corrected_sequence += "L"
         adj_sequence += aa
-        if i > 99:
+        if i > 49:
             adj_sequence += "\n"
             i = 0        
 
