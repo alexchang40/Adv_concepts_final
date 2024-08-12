@@ -28,7 +28,9 @@ function processJSON( data ) {
     $("#results").show();
 }
 
-$("#submit").click( function() {
-    sendSequence();
-    return false;
+$(document).ready(function() {
+    $("#submit").click(function(event) {
+        event.preventDefault();
+        sendSequence();
+    });
 });
