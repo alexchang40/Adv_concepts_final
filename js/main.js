@@ -24,6 +24,7 @@ function processJSON( data ) {
     $("#results").append("<p><strong>Weight:</strong> " + data.weight + "</p>");
     $("#results").append("<p><strong>Hydropathy:</strong> " + data.hydropathy + "</p>");
     $("#results").append("<p><strong>Extinction Coefficient:</strong> " + data.extinction + "</p>");
+    $("#results").append("<p><strong>Charge at pH 7.4:</strong> " + data.charge + "</p>");
     $("#results").append("<p><strong>pI:</strong> " + data.pI + "</p>");
     $("#results").show();
 }
