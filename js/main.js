@@ -23,7 +23,7 @@ function processJSON( data ) {
     $("#results").append("<p><strong>Length:</strong> " + data.length + "</p>");
     $("#results").append("<p><strong>Weight:</strong> " + data.weight + "</p>");
     $("#results").append("<p><strong>Hydropathy:</strong> " + data.hydropathy + "</p>");
-    $("#results").append("<p><strong>Extinction Coefficient:</strong> " + data.extinction_coefficient + "</p>");
+    $("#results").append("<p><strong>Extinction Coefficient:</strong> " + data.extinction + "</p>");
     $("#results").append("<p><strong>pI:</strong> " + data.pI + "</p>");
     $("#results").show();
 }
