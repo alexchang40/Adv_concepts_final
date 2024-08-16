@@ -1,7 +1,6 @@
 * ABOUT
 
-  Web-based platform for protein molecular property characterization
-  Provides the following properties:
+  Web-based platform for protein molecular property characterization that provides the following properties:
   * Sequence length
   * Molecular weight
   * Hydropathy index
